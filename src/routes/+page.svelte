@@ -70,8 +70,8 @@
 			class="border border-gray-300 rounded ps-3 pt-2"
 			bind:value={text}
 		></Textarea>
-		<div class="flex">
-			{#if data_loading}
+		<div class="flex justify-between w-full">
+			{#if !data_loading}
 				<P class="w-full mt-3" size="sm">This might take upto 30 seconds, please be patient.</P>
 			{/if}
 			<Button
@@ -108,7 +108,7 @@
 			</Button>
 		</div>
 		{#if results.length}
-			<div class="w-auto my-5 overflow-x-auto">
+			<div class="w-full my-5 overflow-x-auto">
 				<Table divClass="border rounded">
 					<TableHead>
 						<TableHeadCell>#</TableHeadCell>
