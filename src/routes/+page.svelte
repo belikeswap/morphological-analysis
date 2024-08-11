@@ -71,9 +71,13 @@
 			bind:value={text}
 		></Textarea>
 		<div class="flex justify-between w-full">
-			{#if !data_loading}
-				<P class="w-full mt-3" size="sm">This might take upto 30 seconds, please be patient.</P>
-			{/if}
+			<P class="w-full mt-3" size="sm">
+				{#if data_loading}
+					{'This might take upto 30 seconds, please be patient.'}
+				{:else}
+					{''}
+				{/if}
+			</P>
 			<Button
 				class="mt-3"
 				on:click={() => {
