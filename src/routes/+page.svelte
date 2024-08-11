@@ -51,15 +51,15 @@
 				href="https://github.com/belikeswap/morphological-analysis"
 			>
 				<Badge rounded color="dark" class="mx-1"
-					><GithubSolid class="w-3 h-3 me-2" />Github Repo</Badge
+					><GithubSolid class="w-3 h-3 me-1" />Github Repo</Badge
 				>
 			</A>. The dataset for this project can be found at <A
 				href="https://github.com/hugomailhot/MorphoLex-en"
 			>
 				<Badge rounded color="dark" class="mx-1"
-					><GithubSolid class="w-3 h-3 me-2" />hugomailhot/MorphoLex-en</Badge
+					><GithubSolid class="w-3 h-3 me-1" />hugomailhot/MorphoLex-en</Badge
 				></A
-			>.</P
+			></P
 		>
 		<Textarea
 			name="input"
@@ -70,38 +70,43 @@
 			class="border border-gray-300 rounded ps-3 pt-2"
 			bind:value={text}
 		></Textarea>
-		<Button
-			class="mt-3"
-			on:click={() => {
-				data_loading = true;
-				fetch('https://morpheme-analysis.onrender.com/analyse', {
-					method: 'POST',
-					body: JSON.stringify({ text }),
-					headers: {
-						'Content-Type': 'application/json'
-					},
-					mode: 'cors'
-				})
-					.then((raw) => {
-						return raw.json();
-					})
-					.then((res) => {
-						results = res;
-					})
-					.catch((err) => {
-						console.error(err);
-					})
-					.finally(() => {
-						data_loading = false;
-					});
-			}}
-		>
+		<div class="flex">
 			{#if data_loading}
-				<Spinner class="me-3" size="4" color="white" />Analyzing
-			{:else}
-				<PenSolid class="w-5 h-5 me-2" /> Analyze
+				<P class="w-full mt-3" size="sm">This might take upto 30 seconds, please be patient.</P>
 			{/if}
-		</Button>
+			<Button
+				class="mt-3"
+				on:click={() => {
+					data_loading = true;
+					fetch('https://morpheme-analysis.onrender.com/analyse', {
+						method: 'POST',
+						body: JSON.stringify({ text }),
+						headers: {
+							'Content-Type': 'application/json'
+						},
+						mode: 'cors'
+					})
+						.then((raw) => {
+							return raw.json();
+						})
+						.then((res) => {
+							results = res;
+						})
+						.catch((err) => {
+							console.error(err);
+						})
+						.finally(() => {
+							data_loading = false;
+						});
+				}}
+			>
+				{#if data_loading}
+					<Spinner class="me-3" size="4" color="white" />Analyzing
+				{:else}
+					<PenSolid class="w-5 h-5 me-2" /> Analyze
+				{/if}
+			</Button>
+		</div>
 		{#if results.length}
 			<div class="w-auto my-5 overflow-x-auto">
 				<Table divClass="border rounded">
