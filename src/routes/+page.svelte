@@ -66,7 +66,7 @@
 			id="text-input"
 			rows="7"
 			cols="100"
-			placeholder="Enter your text..."
+			placeholder="Enter your word(s) or sentence(s)..."
 			class="border border-gray-300 rounded ps-3 pt-2"
 			bind:value={text}
 		></Textarea>
@@ -146,7 +146,7 @@
 						{/each}
 					</TableBody>
 					<tfoot>
-						<tr class="font-semibold text-gray-900 dark:text-white bg-gray-100">
+						<tr class="font-semibold text-gray-900 dark:text-white bg-slate-100">
 							<td class="py-3 px-6"></td>
 							<td class="py-3 px-6"></td>
 							<th scope="row" class="py-3 px-6 text-base">Total Count</th>
