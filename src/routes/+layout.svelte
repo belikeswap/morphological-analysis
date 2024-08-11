@@ -1,7 +1,11 @@
 <script>
-	import { Footer, FooterCopyright, FooterLinkGroup, FooterLink } from 'flowbite-svelte';
+	import { Footer, FooterCopyright } from 'flowbite-svelte';
 	import '../app.css';
 </script>
+
+<svelte:head>
+	<meta name="Morphological Analysis Generator" />
+</svelte:head>
 
 <div class="w-full h-screen">
 	<slot />
@@ -9,7 +13,8 @@
 		<Footer>
 			<div class="flex items-center justify-center w-full py-4 bg-slate-100">
 				<FooterCopyright
-					aClass="text-blue-500"
+					spanClass="text-slate-700 text-sm font-base"
+					aClass="text-blue-600 font-semibold hover:cursor-pointer hover:underline"
 					href="https://github.com/belikeswap"
 					by="Swapnajit Banerjee"
 					year={new Date().getFullYear()}
