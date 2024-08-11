@@ -74,7 +74,7 @@
 			class="mt-3"
 			on:click={() => {
 				data_loading = true;
-				fetch('http://localhost:3000/analyse', {
+				fetch('https://morpheme-analysis.onrender.com/analyse', {
 					method: 'POST',
 					body: JSON.stringify({ text }),
 					headers: {
